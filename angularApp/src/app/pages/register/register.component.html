@@ -1,0 +1,42 @@
+<div class="login-wrapper">
+  <mat-card class="example-card" id="register">
+
+    <mat-card-header>
+      <!-- TODO :: ADD APP IMAGE -->
+      <img src="../../assets/E-Coach_Logo.png">
+    </mat-card-header>
+
+    <mat-card-content>
+      <form class="example-form">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+            placeholder="Ex. pat@example.com">
+          @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+          <mat-error>Please enter a valid email address</mat-error>
+          }
+          @if (emailFormControl.hasError('required')) {
+          <mat-error>Email is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher"
+            placeholder="Ex. qwerty1234">
+          @if (passwordFormControl.hasError('required')) {
+          <mat-error>Password is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions class="card-actions">
+      <p>Already Have an Account? <a routerLink='/login'><strong>Log In</strong></a></p>
+      <button type="submit" mat-raised-button color="primary" (click)="register()">SIGN UP</button>
+    </mat-card-actions>
+
+    <mat-progress-bar [mode]="progress"></mat-progress-bar>
+
+  </mat-card>
+</div>

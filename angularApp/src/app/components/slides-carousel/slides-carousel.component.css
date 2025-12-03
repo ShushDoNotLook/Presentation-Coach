@@ -1,0 +1,117 @@
+h1 {
+    margin-left: -100px;
+}
+
+mat-drawer-container {
+    margin: 10px;
+    border: 1px solid #e0e0e0;
+    max-width: 100%; /* Set the maximum width to 100% of its container */
+    height: auto;
+    display: flexbox;
+}
+
+mat-drawer {
+    width: 120px;
+    border-right: 1px solid #e0e0e0;
+    display: inline-block;
+    size: 10pt;
+    max-width: 100%; 
+    height: auto;
+}
+
+mat-drawer-content {
+    overflow: hidden;
+    object-fit: contain;
+}
+
+.current-slide img {
+    max-width: 100%; /* Set the maximum width to 100% of its container */
+    height: auto;
+    margin: auto;
+    border-radius: 0px;
+    transition: none;
+}
+
+.slide-thumbnail {
+    font-size: 10pt;
+    padding: 10px;
+    border-radius: 0px;
+    box-shadow: none;
+}
+
+.slide-thumbnail:hover {
+    background-color: #F5F5F5;
+}
+
+.slide-thumbnail img {
+    max-width: 100%;
+    height: auto;
+    float: right;
+}
+
+header {
+    margin-top: 25px;
+    margin-left: 7%; 
+    margin-right: 7%; 
+    display: flex;
+}
+
+header button {
+    margin-left: auto;
+}
+
+.button_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.buttons {
+    margin-left: 20px;
+}
+
+.button_container h1 {
+    margin-top: 25px;
+    margin-left: 7%;
+    margin-right: 7%;
+}
+
+.slide-select {
+    background-color: rgb(230, 230, 230); 
+    padding: 10px;
+}
+
+@media (max-width: 900px) {
+    mat-drawer-container {
+        height: auto;
+        margin: 10px;
+        border: 1px solid #e0e0e0;
+        display: flex;
+        flex-direction: column; /* Stack elements vertically */
+    }
+
+    mat-drawer {
+        width: 100px;
+        border-right: 1px solid #e0e0e0;
+        display: block;
+        size: 10pt;
+        /* max-width: 100%;  */
+        /* height: auto; */
+    }
+
+    mat-drawer-content {
+        display: inline-block;
+    }
+
+    .buttons-desktop {
+        display: none;
+    }
+
+    .buttons-mobile {
+        display: flex;
+        justify-content: center;
+    }
+  }

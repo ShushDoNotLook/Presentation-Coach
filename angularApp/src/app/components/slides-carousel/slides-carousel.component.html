@@ -1,0 +1,34 @@
+<!-- Buttons -->
+<div class="buttons">
+    <div class="button_container slide-select">
+        <button mat-fab aria-label="Previous Slide" (click)="prevSlide()" color="primary" matTooltip="You can also use Arrow Keys to navigate through slides!" matTooltipPosition="above">
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+
+        <h1>Slide {{currentSlide + 1}}</h1>
+
+        <button mat-fab aria-label="Next Slide" (click)="nextSlide()" color="primary" matTooltip="You can also use Arrow Keys to navigate through slides!" matTooltipPosition="above">
+            <mat-icon>chevron_right</mat-icon>
+        </button>
+    </div>
+</div>
+
+<!-- Carousel -->
+<mat-drawer-container>
+    <mat-card class="current-slide" (click)="nextSlide()">
+        <img mat-card-image [src]="slides[currentSlide]">
+    </mat-card>
+    <mat-drawer id="side-bar" mode="side" opened>
+        <div *ngFor="let slide of slides; let i = index">
+            <mat-card matRipple class="slide-thumbnail" (click)="changeSlide(i)">
+                <span>{{i + 1}}<img mat-card-sm-image src={{slide}}></span>
+            </mat-card>
+        </div>
+    </mat-drawer>
+    
+    <mat-drawer-content>
+        <mat-card class="current-slide" (click)="nextSlide()" matTooltip="You can press Enter or the current slide to go to the next slide!" matTooltipPosition="above">
+            <img mat-card-image src={{currentSlideImage}}>
+        </mat-card>
+    </mat-drawer-content>
+</mat-drawer-container>

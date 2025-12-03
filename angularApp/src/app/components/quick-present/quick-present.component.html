@@ -1,0 +1,40 @@
+<div class="home-wrapper">
+
+      <div class="container">
+        <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac quam eget lectus viverra
+          scelerisque. Donec a tempor lorem. Donec in pulvinar lorem. Sed aliquet interdum mi ac mattis. Proin a massa ac
+          ipsum ullamcorper vehicula. Proin nec quam lectus. Vestibulum ut lorem eu ipsum tempus condimentum. Vestibulum
+          egestas sit amet metus et tincidunt. In hendrerit, nisl non tempor gravida, dui elit fermentum orci, in placerat
+          erat nibh quis ligula. Proin non turpis sit amet nibh blandit tristique. Nunc lacinia massa sed nunc aliquam, sit
+          amet semper magna finibus. <br><br>
+      
+          Maecenas dignissim at massa in posuere. Nulla et urna tempor, tempus velit in, condimentum felis. Fusce ut ligula
+          eget purus vehicula finibus sit amet eu mauris. Fusce facilisis laoreet lectus, in pharetra ex imperdiet convallis.
+          Ut venenatis vitae lorem vel tempus. Nam fringilla consequat risus scelerisque egestas. Integer aliquam ex vel erat
+          tristique, id bibendum massa suscipit. Morbi sit amet ultricies tortor, vel elementum justo. Maecenas non mattis
+          tellus, sit amet finibus dui. Maecenas nec neque in purus sagittis iaculis. Etiam congue et massa a sollicitudin.
+          Suspendisse sed ligula lacus. Mauris a nibh magna. Cras ullamcorper interdum nisi, ac bibendum lectus hendrerit
+          quis. <br><br>
+      
+        </div> -->
+        <div class="right">
+          <form class="square">
+            <mat-form-field class="first-question" >
+              <mat-label>Who is the audience?</mat-label>
+              <textarea matInput placeholder="Ex. Business Stakeholders..." [formControl]="exFormControl"></textarea>
+            </mat-form-field>
+            <mat-form-field class="second-question">
+              <mat-label>Time Limit</mat-label>
+              <select matNativeControl required [formControl]="exFormControl">
+                <option value="time-select">Select</option>
+              </select>
+            </mat-form-field>
+            <button type="button" mat-raised-button color="primary" class="upload-button">Upload Files<mat-icon>file_upload
+              </mat-icon></button>
+            <button mat-raised-button color="primary" class="last-button">Start New Presentation<mat-icon>present_to_all
+              </mat-icon></button>
+          </form>
+        </div>
+      </div>
+      
+</div>

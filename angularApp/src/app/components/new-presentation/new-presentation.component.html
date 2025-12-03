@@ -1,0 +1,73 @@
+<header class="header">
+  <h1 style="margin: 0;">Create New Presentation</h1>
+</header>
+
+<mat-divider style="border-color: rgb(230, 230, 230); margin: 0px;"></mat-divider>
+
+
+<div class="ecoach-section-wrapper">
+  <form class="form-flex">
+    <div id="responsive-div">
+    <mat-form-field class="full-width">
+      <mat-label>Presentation name</mat-label>
+      <input matInput placeholder="Ex. Senior Capstone" [formControl]="presentationNameFormControl"
+        [errorStateMatcher]="matcher">
+      @if (presentationNameFormControl.hasError('required')) {
+      <mat-error>Please enter a name</mat-error>
+      }
+    </mat-form-field>
+    </div>
+    <ng-container *ngIf="presentationService.wipPreviewImage else elseTemplate">
+      <div id="responsive-div">
+        <h2>Uploaded Presentation:</h2>
+        <h2>{{presentationService.wipFileName}}</h2>
+      </div>
+    </ng-container>
+    <div id="responsive-div">
+    <img [src]="presentationService.wipPreviewImage" alt="">
+    </div>
+    <ng-template #elseTemplate>
+      <h2>Please Upload a Presentation File</h2>
+    </ng-template>
+    <div id="responsive-div">
+      <button type="button" mat-raised-button color="primary" (click)="fileInput.click()" [disabled]="loading" class="left-align">
+        <ng-container *ngIf="!loading; else loadingBlock">
+          Upload Files <mat-icon class="icon-align">file_upload</mat-icon>
+        </ng-container>
+        <ng-template #loadingBlock>
+          Uploading... <mat-spinner [diameter]="20" style="display:inline-block; vertical-align:middle;"></mat-spinner>
+        </ng-template>
+      </button> 
+      <div *ngIf="fileErrorMessage" class="file-error-message" style="color: red;">
+        {{ fileErrorMessage }}
+      </div>
+    <input hidden (change)="onFileSelected($event)" #fileInput type="file" accept="application/vnd.openxmlformats-officedocument.presentationml.presentation">
+    </div>
+    <div id="responsive-div">
+      <mat-form-field class="full-width">
+        <mat-label>What do you want to improve?</mat-label>
+        <textarea matInput placeholder="Ex. Filler words, Concise Wording..."
+          [formControl]="improveFormControl"></textarea>
+        <mat-error *ngIf="improveFormControl.hasError('required')">
+          Please enter improvement points
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" >
+        <mat-label>Who is the audience?</mat-label>
+        <textarea matInput placeholder="Ex. Business Stakeholders..." [formControl]="audienceFormControl"></textarea>
+        <mat-error *ngIf="audienceFormControl.hasError('required')">
+          Please enter an intended audience
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <button (click)="onSubmit()"
+      [disabled]="!presentationService.wipPreviewImage|| presentationNameFormControl.hasError('required') || improveFormControl.hasError('required') || audienceFormControl.hasError('required') || submitting || loading"
+      mat-raised-button color="primary" class="right-align">
+      Start Presenting
+      <mat-icon>present_to_all</mat-icon>
+    </button>
+
+  </form>
+</div>

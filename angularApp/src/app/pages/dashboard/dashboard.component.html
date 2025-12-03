@@ -1,0 +1,60 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()" [hidden]="!mobileQuery.matches">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <a [routerLink]="'/'"><img class="mainLogo" height="60" src="../../assets/E-Coach_Logo.png"></a>
+    <span class="toolbar-spacer"></span>
+    <button mat-button (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon> Logout
+    </button>
+  </mat-toolbar>
+
+
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    
+    <mat-sidenav #snav [opened]="!mobileQuery.matches" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56" class="side-nav">
+
+      <div class="sidenav-button">
+        <button mat-raised-button color="primary" [routerLink]="'/'" [disabled]="disablePresentationBtn">&#x002B; New Presentation</button>
+      </div>
+
+      <mat-nav-list>
+        <!-- For Every User Presentation -->
+          <ng-container *ngFor="let presentation of sortedPresentations()">
+
+           
+            <!-- Navigation Tab for Presentation -->
+            <mat-list-item routerLinkActive="active-link">
+              <a mat-list-item [routerLink]="'/present/' + presentation[0]" >
+                {{ presentation[1].name }}
+              </a>
+              <button *ngIf="presentation[1].sessions" mat-icon-button matListItemMeta (click)="isContainerVisible[presentation[0]] = !isContainerVisible[presentation[0]]">
+                <mat-icon>
+                  {{ isContainerVisible[presentation[0]] ? "expand_less" : "expand_more"}}
+                </mat-icon>
+              </button>
+            </mat-list-item>
+
+            <!-- Navigation tabs for Sessions -->
+            <ng-container *ngFor="let session of (presentation[1].sessions | keyvalue)">
+              <a *ngIf="isContainerVisible[presentation[0]]" class="session-tab" mat-list-item [routerLink]="'/feedback/' + presentation[0] + '/session/' + session.key"
+                routerLinkActive="active-link">
+                {{session.value.createdAt}}
+              </a>
+            </ng-container>
+            <mat-divider></mat-divider>
+          </ng-container>
+
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <!-- App pages get rendered here, DO NOT CREATE PAGES IN THIS COMPONENT 
+        create a new component then link it by adding route to app.routes.ts -->
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+</div>

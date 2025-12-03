@@ -1,0 +1,181 @@
+.presentation-ready {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  padding: 40px; 
+  text-align: center; 
+}
+
+.instructions-gap {
+  display: inline-block;
+  width: 350px; 
+}
+
+.toggle-instructions p{
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+
+.toggle-instructions::after {
+  content: '';
+  display: block;
+  height: 2px; 
+  background: rgba(0, 0, 0, 0.5); 
+  margin-top: 5px; 
+  margin-bottom: 5px; 
+}
+
+
+/* .presentation-ready h1 {
+  font-size: 3rem;
+  margin-right: 10px; 
+} */
+
+.presentation-ready button {
+  margin-top: 14px;
+  font-size: 1rem; 
+  padding: 15px 30px; 
+}
+
+.instructions {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  max-width: 550px;
+}
+
+.instructions ol {
+  text-align: left;
+}
+
+.instructions li {
+  margin-bottom: 20px;
+}
+
+.arrow {
+  cursor: pointer;
+}
+
+.recording-warning {
+  color: #F44336;
+  margin-top: 20px; 
+  text-align: center; 
+  font-weight: bold; 
+  max-width: 300px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 auto;
+  padding: 10px;
+
+  flex-wrap: wrap;
+}
+
+.waveform-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 275px;
+  height: 70px;
+  background-color: white;
+  border: 1px solid #333;
+  padding: 0 10px;
+  font-weight: bold; 
+}
+
+.waveform-svg {
+  height: 100%;
+  width: auto;
+  /* color: #22173D */
+}
+
+.transcript {
+  /* margin-top: 12px;
+  border: 1px solid #333;
+  padding: 5px;
+  width: calc(100% - 300px - 20px - 2 * 10px);
+  height: 60px;
+  overflow: auto;
+  white-space: normal;
+  text-overflow: clip; */
+}
+
+/* button {
+  padding: 8px 10px;
+  font-size: .8rem;
+  min-width: 120px;
+  white-space: nowrap;
+  flex-shrink: 0;
+} */
+
+.record-button {
+  background-color: #90ee90;
+  color: #362e2e;
+  margin-left: -20px;
+}
+
+.stop-button {
+  background-color: #ff6961;
+  color: #ffffff;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px; 
+}
+
+header h1 {
+  margin: 0; 
+  flex-grow: 1; 
+}
+
+button {
+  margin-left: 20px; 
+  margin-bottom: 5px;
+}
+
+mat-divider {
+  margin-bottom: 20px;
+  border: .5px solid var(--WF-Base-800, #2D3648);
+}
+
+
+@media (max-width: 900px) {
+
+  .presentation-ready h1 {
+    font-size: 2rem;
+  }
+
+  header h1 {
+    font-size: 20px;
+  }
+
+  mat-divider {
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+
+  
+}
+
+.whisper-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 25px;
+  margin-bottom: 16px;
+}
+
+.example-card {
+  width: 95%;
+  /* margin: 0 auto; */
+  margin: 10px auto;
+  height: max-content;
+}

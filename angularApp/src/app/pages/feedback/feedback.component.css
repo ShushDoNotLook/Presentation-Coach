@@ -1,0 +1,168 @@
+h1 {
+    margin-top: 25px;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin-left: 7%;
+    margin-right: 7%;
+}
+
+.title h1,
+p {
+    text-align: center;
+}
+
+mat-divider {
+    margin-bottom: 20px;
+    border: .5px solid var(--WF-Base-800, #2D3648);
+}
+
+mat-progress-spinner {
+    margin-left: 7%;
+    margin-bottom: -40%;
+    stroke-linecap: round;
+    stroke: #2D3648;
+
+}
+
+#custom-spinner {
+    rotate: 90;
+    transform: rotate(-90deg);
+    border-radius: 50%;
+    color: linear-gradient(254deg, #2D3648 14.59%, #A0ABC0 86.04%);
+    width: 100px;
+    /* Set the desired width */
+    height: 100px;
+    /* Set the desired height */
+
+}
+
+.score {
+    font-size: 30px;
+    align-items: center;
+    text-align: center;
+    margin-left: 17%;
+}
+
+.container {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    margin-left: 7%;
+    text-align: center;
+    margin-bottom: 3%;
+}
+
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+}
+
+.regenerate {
+    border-radius: 6px;
+    border: 2px solid var(--WF-Base-800, #2D3648);
+    display: flex;
+    padding: 5px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: white;
+
+}
+
+.practice_again {
+    border-radius: 6px;
+    border: 2px solid var(--WF-Base-800, #2D3648);
+    background-color: var(--WF-Base-800, #2D3648);
+    display: flex;
+    padding: 5px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    margin-left: 5%;
+}
+
+.button_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.icon {
+    font-size: 24px;
+    align-self: center;
+}
+
+.carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.slide {
+    width: 100%;
+    max-width: 800px;
+    flex: 0 0 70%;
+}
+
+.feedback-header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.slide-select {
+    background-color: rgb(230, 230, 230); 
+    padding: 10px;
+    
+}
+
+.slide-transcript {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: top;
+    flex-wrap: wrap;
+    width: 90%;
+    padding-top: 20px
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.full-width {
+    width: 100%;
+} 
+
+.score-display{
+    position: relative;
+    width: 230px;
+    height: 120px;
+    margin: 20px;
+}
+
+.score-display h2{
+    position: absolute;
+    top: 80px;
+    left: 40px;
+    /* transform: translateX(-50%); */
+}
+
+.score-display mat-progress-spinner{
+    position: absolute;
+    top: 0;
+    left: 0;
+}

@@ -1,0 +1,81 @@
+<header class="whisper-header">
+  <h1>Presenting <span style="font-weight: 500;">{{presentationService.currentPresentation?.name || "Current Presentation"}}</span></h1>
+  <!-- TODO: disable when transcription is empty (no text on any slide)-->
+  <div style="margin: auto;">
+    <button mat-raised-button color="primary" (click)="submitPracticeSession()" [disabled]="!this.presentationService.currentPresentation?.transcription || submitting || recording">{{submitting ? "Generating Feedback..." : "Submit Practice Session"}}</button>
+  </div>
+</header>
+
+<mat-divider style="border-color: rgb(230, 230, 230); margin: 0px;"></mat-divider>
+
+<!-- Ready to Present Section -->
+<div *ngIf="!showWaveform" class="presentation-ready">
+  <h1>Presentation Checklist</h1>
+
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Instructions
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-list role="list" style="max-width: 500px; text-align: left;">
+        <h3 role="listitem">Check that your microphone is plugged in and is recognized by your device.</h3>
+        <h3 role="listitem">Make sure your microphone has access in your browser.</h3>
+        <h3 role="listitem">Press the "Start Presentation" button when you are ready to present.</h3>
+        <h3 role="listitem">Press the blue "Microphone" button to speech record.</h3>
+        <h3 role="listitem">Present your slide, wait for transcript to show then click the next arrow to save the slide's transcript.</h3>
+        <h3 role="listitem">Wait a few seconds before pressing the red "Stop" button.</h3>
+        <h3 role="listitem">Press "Submit Practice Session" and recieve personalized feedback.</h3>
+      </mat-list>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <p class="recording-warning">Please wait until the text shows up on your transcript before moving to the next slide.</p>
+
+  <button mat-raised-button color="primary" (click)="showRecordingUI()">Start Presentation</button>
+
+</div>
+
+<!-- Recording/Waveform Section -->
+<div *ngIf="showWaveform" class="container">
+  <p class="recording-warning">Please wait until the text shows up on your transcript before moving to the next slide.</p>
+  <!-- RECORD SPEECH -->
+  <div style="display: flex; align-items: center; justify-content: space-between;">
+    <!-- BUTTON -->
+    <button mat-fab *ngIf="!recording" style="margin-right:10px;" color="primary" (click)="startRecording()" matTooltip="You can also press Space to start and stop recording!" matTooltipPosition="above">
+      <mat-icon>mic</mat-icon>
+    </button>
+    <button mat-fab color="warn" *ngIf="recording" style="margin-right:10px;"
+      (click)="stopRecording()">
+      <mat-icon>stop</mat-icon>
+    </button>
+    <!-- WAVEFORM -->
+    <div class="waveform-container">
+      <p class="time">{{ currentTime }}</p>
+      <svg class="waveform-svg" viewBox="0 0 1000 300">
+        <path [attr.d]="generatePath(waveform)" fill="none" stroke="#F44336" stroke-width="2"></path>
+      </svg>
+    </div>
+
+
+  </div>
+
+</div>
+
+<!-- TODO: Better solution for this going on here -->
+<app-slides-carousel [slides]="presentationService.currentPresentation?.images || []"></app-slides-carousel>
+
+<mat-card *ngIf="showWaveform" class="example-card">
+  <mat-card-header>
+    <mat-card-title>Slide Transcript</mat-card-title>
+  </mat-card-header>
+  <mat-card-content >
+    <p style="padding-bottom: 5px;">{{speechToText.text || "..."}}</p>
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-progress-bar [mode]="speechToText.recording ? 'indeterminate' : 'determinate'"></mat-progress-bar>
+  </mat-card-footer>
+</mat-card>

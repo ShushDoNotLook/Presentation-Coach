@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "ai-presentation-coach-3435c"
+  },
+  "targets": {
+    "ai-presentation-coach-3435c": {
+      "hosting": {
+        "dist/app/browser": [
+          "ai-presentation-coach-3435c"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

@@ -1,0 +1,88 @@
+<div *ngIf="presentationService.currentPresentation as currentPresentation">
+    <div class="feedback-header">
+        <h1>
+            {{ currentPresentation.name }} Feedback
+        </h1>
+        <h1>
+            {{currentPresentation.sessions![currentPresentation.sessionId || ""].createdAt}}
+        </h1>
+    </div>
+    <mat-divider style="border-color: rgb(230, 230, 230); margin: 0px;"></mat-divider>
+
+
+    <div *ngIf="currentPresentation.slidesWithFeedback && currentPresentation.slidesWithFeedback.length > 0; else noSlidesTemplate"
+        class="carousel-container">
+
+
+        <div class="button_container slide-select">
+            <button mat-fab color="primary" (click)="prevSlide()">
+                <mat-icon>chevron_left</mat-icon>
+            </button>
+
+            <h1 style="margin-left: 10px; margin-right: 10px;">Slide {{currentSlideIndex + 1}}</h1>
+
+            <button mat-fab color="primary" (click)="nextSlide()">
+                <mat-icon>chevron_right</mat-icon>
+            </button>
+        </div>
+
+
+        <div class="slide-transcript">
+            <mat-card class="slide">
+                <img mat-card-image [src]="currentPresentation.slidesWithFeedback[currentSlideIndex].imageUrl"
+                    alt="Slide {{currentSlideIndex + 1}}">
+            </mat-card>
+
+            <div style="flex: auto; ">
+                <h1 style="text-align: center;"
+                    *ngIf="currentPresentation.slidesWithFeedback[currentSlideIndex].transcript">
+                    <strong>Transcript:</strong>
+                </h1>
+                <h2>
+                    {{currentPresentation.slidesWithFeedback[currentSlideIndex].transcript}}
+                </h2>
+            </div>
+        </div>
+
+        <!-- If Presentation Has Feedback, else Alternate View -->
+
+        <div class="score-display"  *ngIf="currentPresentation.slidesWithFeedback[currentSlideIndex].feedback; else noFeedbackTemplate">
+            <!-- Background score spinner -->
+            <mat-progress-spinner class="mat-spinner-lg" [color]="color" [mode]="mode" [value]="50" [diameter]="200"  id="custom-spinner">
+            </mat-progress-spinner>
+
+            <!-- Score driven score spinner -->
+            <mat-progress-spinner class="mat-spinner-lg" color="primary" [mode]="mode"  [value]="currentPresentation.slidesWithFeedback[currentSlideIndex].feedback.score  * 5" [diameter]="200" id="custom-spinner">
+            </mat-progress-spinner>
+
+            <!-- Score -->
+            <h2 class="score">{{currentPresentation.slidesWithFeedback[currentSlideIndex].feedback.score}} / 10</h2>
+        </div>
+            <!-- <p><strong>Score:</strong> {{currentPresentation.slidesWithFeedback[currentSlideIndex].feedback.score}} -->
+            <!-- </p> -->
+        <div *ngIf="currentPresentation.slidesWithFeedback[currentSlideIndex].feedback; else null">
+            <h1><strong>Positive Feedback:</strong></h1>
+            <h2>{{currentPresentation.slidesWithFeedback[currentSlideIndex].feedback.positive_feedback}}</h2>
+
+            <h1><strong>Areas of Improvement:</strong></h1>
+            <h2>{{currentPresentation.slidesWithFeedback[currentSlideIndex].feedback.areas_of_improvement}}</h2>
+        </div>
+    </div>
+
+
+
+    <ng-template #noSlidesTemplate>
+        <h1>No slides to display.</h1>
+    </ng-template>
+
+    <ng-template #noFeedbackTemplate>
+        <h1>No feedback generated for this slide.</h1>
+    </ng-template>
+</div>
+
+<!-- <div class="button_container">
+    <button mat-raised-button class="regenerate" (click)="feedbackFunction()" [disabled]="regenerating">{{regenerating ?
+        "Regenerating..." : "Regenerate"}}<span class="icon"> &#x27f3; </span></button>
+    <button mat-raised-button class="practice_again" (click)="practiceAgain()">Practice Again <span class="icon">
+            &#x2192; </span></button>
+</div> -->

@@ -1,0 +1,54 @@
+.example-card {
+  max-width: 400px;
+ 
+  display: flex;
+  align-items: center;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a:link, a:visited {
+  color: blue !important;
+  text-decoration: underline !important;
+  font-weight: normal !important;
+}
+
+a:visited {
+  color: purple !important;
+  text-decoration: underline !important;
+  font-weight: normal !important;
+}
+
+a:hover {
+  color: darkblue !important;
+  text-decoration: underline !important;
+  font-weight: normal !important;
+  cursor: pointer
+}
+
+a:active {
+  color: darkred !important;
+  text-decoration: underline !important;
+  font-weight: normal !important;
+  cursor: pointer
+}

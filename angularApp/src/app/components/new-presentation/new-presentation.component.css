@@ -1,0 +1,68 @@
+.ecoach-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 12px;
+}
+
+.icon-align {
+  vertical-align: middle;
+  margin-bottom: 3px; 
+}
+
+.form-flex {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.full-width{
+width: 100%
+}
+
+.left-align {
+  align-self: flex-start;
+}
+
+.right-align {
+  align-self: flex-end;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 16px;
+    padding-left: 20px;
+}
+
+@media (max-width: 900px) {
+
+  img {
+    width: 50%;
+    align-self: center;
+  }
+
+  button {
+    align-self: center;
+  }
+
+  h2 {
+    margin-left: 3%;
+  }
+
+  #entry-box {
+    width: 50%;
+    align-self: center;
+    display: block;
+  }
+
+  #responsive-div {
+    display: flexbox;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 2%;
+  }
+
+}
