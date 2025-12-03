@@ -1,5 +1,5 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { provideRouter, withHashLocation } from '@angular/router';
+import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -12,7 +12,7 @@ import { withFetch } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes, withHashLocation()),
+    provideRouter(routes),
     provideHttpClient(withFetch()),
     importProvidersFrom(provideFirebaseApp(() => initializeApp({
         "projectId": "ai-presentation-coach-3435c",

@@ -22,7 +22,12 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "404.html",
+                "input": "src",
+                "output": "/"
+              }
             ],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
