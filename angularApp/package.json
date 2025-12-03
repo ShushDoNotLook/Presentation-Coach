@@ -5,10 +5,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration production --base-href /Presentation-Coach/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:app": "node dist/app/server/server.mjs",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "deploy": "ng deploy --base-href=/Presentation-Coach/"
   },
   "private": true,
   "dependencies": {
@@ -43,6 +45,7 @@
     "@types/node": "^18.18.0",
     "@types/node-fetch": "^2.6.11",
     "@types/pdfmake": "^0.2.8",
+    "angular-cli-ghpages": "^2.0.3",
     "cypress": "^13.6.6",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
