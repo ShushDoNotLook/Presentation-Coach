@@ -2,7 +2,6 @@ import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter, withHashLocation } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideClientHydration } from '@angular/platform-browser';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
@@ -14,7 +13,6 @@ import { withFetch } from '@angular/common/http';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes, withHashLocation()),
-    provideClientHydration(),
     provideHttpClient(withFetch()),
     importProvidersFrom(provideFirebaseApp(() => initializeApp({
         "projectId": "ai-presentation-coach-3435c",
@@ -29,7 +27,6 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(provideAuth(() => getAuth())),
     importProvidersFrom(provideDatabase(() => getDatabase())),
     importProvidersFrom(provideStorage(() => getStorage())),
-    provideAnimations(),
     provideAnimations()
 ]
 };
